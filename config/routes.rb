@@ -1,24 +1,28 @@
+# Rails.application.routes.draw do
+
+
+#   get 'restaurants', to: 'restaurants#index'
+
+#   get 'restaurants/new', to: "restaurants#new" , as: "new_restaurant"
+
+#   get "restaurants/:id", to: "restaurants#show", as: "restaurant"
+#   post "restaurants", to: "restaurants#create"
+
+
+
+#   get 'reviews', to: 'reviews#index'
+
+#   get "restaurantss/:id/reviews/new", to: "reviews#new", as: "new_review"
+# end
+
+
 Rails.application.routes.draw do
+  resources :restaurants
+  resources :restaurants do
+    resources :reviews, only: [:new, :create]
+  end
+end
 
-
-  get 'restaurants', to: 'restaurants#index'
-
-  get 'restaurants/new', to: "restaurants#new" , as: "new_restaurant"
-
-  get "restaurants/:id", to: "restaurants#show", as: "restaurant"
-  post "restaurants", to: "restaurants#create"
-
-
-
-  get 'reviews', to: 'reviews#index'
-
-
-
-  get "restaurants/:id/reviews", to: "reviews#new"
-
-  get 'reviews/new'
-
-  get 'reviews/show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -74,4 +78,3 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
